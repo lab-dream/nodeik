@@ -7,3 +7,8 @@ build
 checkpoints
 examples/wandb
 lightning_logs
+.venv/
+*.egg-info/
+model/*.pt
+model/*_vision/
+log/

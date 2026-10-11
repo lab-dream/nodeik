@@ -177,7 +177,7 @@ class ODEfunc(nn.Module):
                 t = torch.ones(y.size(0), 1).to(y) * t.clone()#.detach().type_as(y)
                 tc = torch.cat([t, c.view(y.shape[0], -1)], dim=1)
                 dy = self.diffeq(tc, y, *states[3:])
-                divergence = torch.zeros_like(c[:,0])
+                divergence = torch.zeros_like(states[2])
 
                 return tuple([dy, torch.zeros_like(c), -divergence] + [torch.zeros_like(s_) for s_ in states[3:]])
 

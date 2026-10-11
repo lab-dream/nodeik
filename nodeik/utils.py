@@ -2,15 +2,12 @@ import os
 import math
 from numbers import Number
 import logging
-import six
 import math
 import nodeik.layers as layers
 import torch
 import numpy as np
 
 from math import cos, inf, sin
-
-import warp as wp
 
 
 def isnan(tensor):
@@ -135,6 +132,8 @@ def render(r, sub_dir, file_name, qs, dt):
     qs: Q set
     dt: delta time
     """
+    import warp as wp
+
     createDirectory(f"{sub_dir}")
     render_time = 0.0 
     renderer = wp.sim.render.SimRenderer(r.model, "{}/{}.usd".format(sub_dir,file_name))

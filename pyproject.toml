@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=71"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nodeik"
+version = "0.0.2"
+description = "Conditional Neural ODE IK with the existing LeRobot AI Worker FK"
+requires-python = ">=3.12"
+dependencies = ["torch>=2.7,<2.12", "numpy>=2,<2.3", "torchdiffeq>=0.2.5,<0.3"]
+
+[project.optional-dependencies]
+worker = ["lerobot[dataset,diffusion]"]
+
+[project.scripts]
+nodeik-worker = "nodeik.ai_worker:main"
+
+[tool.uv.sources]
+lerobot = { path = "../dream_lerobot", editable = true }
+
+[tool.setuptools.packages.find]
+include = ["nodeik*"]
+
+[tool.ruff]
+line-length = 110
+
+[tool.ruff.format]
+skip-magic-trailing-comma = true
+
+[tool.ruff.lint.isort]
+split-on-trailing-comma = false
